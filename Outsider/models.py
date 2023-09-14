@@ -51,6 +51,7 @@ class OrderAddress(models.Model):
 
 class chat(models.Model):
     user = models.ForeignKey(outsiders, on_delete=models.CASCADE)
+    uname=models.CharField(max_length=100)
     message = models.CharField(max_length=500)
     reply = models.CharField(max_length=500,default="no reply")
     chatstatus = models.CharField(max_length=20)
