@@ -72,21 +72,25 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Food</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'add_food' %}"><i class="icon bi bi-circle-fill"></i> Add Food</a></li>
-            <li><a class="treeview-item" href="{% url 'view_food' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
+            <li><a class="treeview-item" href="{% url 'viewFoods' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
           </ul>
         </li>
 
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Notification</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'add_notification' %}"><i class="icon bi bi-circle-fill"></i> Add Notification</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
+            <li><a class="treeview-item" href="{% url 'viewNotification' %}"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
           </ul>
       </li>
 
-      <li><a class="app-menu__item" href="{% url 'chatWithUser' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
+      <li><a class="app-menu__item" href="{% url 'viewChat' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
       
         
         <li><a class="app-menu__item" href="{% url 'viewUsers' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Users</span></a></li>
+        <li><a class="app-menu__item" href="{% url 'viewOrder' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Orders</span></a></li>
+        
+        <li><a class="app-menu__item" href="{% url 'viewPayment' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Payments</span></a></li>
+      
       </ul>
     </aside>
     <main class="app-content">
@@ -112,7 +116,7 @@
                 <tr>  
                   <td>{{forloop.counter}}</td>
                   <td>{{i.category_name}}</td>
-                  <td><imag src="media/{{i.category_image}}" alt="" width="100px" height="50px"></td>
+                  <td><img src="media/{{i.category_image}}" alt="" width="60px" height="50px"></td>
                   <td>
                     <a href="{% url 'adminEditCategory' i.id %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'deleteCategory' i.id %}" class="btn btn-danger">Delete</a>

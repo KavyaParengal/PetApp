@@ -40,4 +40,23 @@ urlpatterns=[
 
     path("viewUsers",views.viewUsers,name="viewUsers"),
 
+    path("addFood",views.addFood,name="addFood"),
+    path("viewFoods",views.viewFoods,name="viewFoods"),
+    path("adminEditFood<int:foodId>",views.adminEditFood,name="adminEditFood"),
+    path("updateFood<int:foodId>",views.updateFood,name="updateFood"),
+    path("deleteFood<int:foodId>",views.deleteFood,name="deleteFood"),
+
+    path("viewChat",views.viewChat,name="viewChat"),
+    path("replyChat<int:id>",views.replyChat,name="replyChat"),
+    path("updateChat<int:id>",views.updateChat,name="updateChat"),
+
+    path("viewOrder",views.viewOrder,name="viewOrder"),
+
+    path("notificationPage<int:id>",views.notificationPage,name="notificationPage"),
+    path("addNotification",views.addNotification,name="addNotification"),
+    path("viewNotification",views.viewNotification,name="viewNotification"),
+    path("deleteNotification<int:notifyId>",views.deleteNotification,name="deleteNotification"),
+
+    path("viewPayment",views.viewPayment,name="viewPayment"),
+
 ]

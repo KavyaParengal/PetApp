@@ -72,21 +72,25 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Food</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'add_food' %}"><i class="icon bi bi-circle-fill"></i> Add Food</a></li>
-            <li><a class="treeview-item" href="{% url 'view_food' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
+            <li><a class="treeview-item" href="{% url 'viewFoods' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
           </ul>
         </li>
 
         <li class="treeview  is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Notification</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
             <ul class="treeview-menu">
               <li><a class="treeview-item active" href="{% url 'add_notification' %}"><i class="icon bi bi-circle-fill"></i> Add Notification</a></li>
-              <li><a class="treeview-item" href="{% url 'view_notification' %}"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
+              <li><a class="treeview-item" href="{% url 'viewNotification' %}"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
             </ul>
         </li>
 
-        <li><a class="app-menu__item" href="{% url 'chatWithUser' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
+        <li><a class="app-menu__item" href="{% url 'viewChat' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
       
-        
         <li><a class="app-menu__item" href="{% url 'viewUsers' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Users</span></a></li>
+        
+        <li><a class="app-menu__item" href="{% url 'viewOrder' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Orders</span></a></li>
+      
+        <li><a class="app-menu__item" href="{% url 'viewPayment' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Payments</span></a></li>
+      
       </ul>
     </aside>
     <main class="app-content">
@@ -98,30 +102,30 @@
         <div class="col-md-8">
           <div class="tile">
             <div class="tile-body">
-              <form class="form-horizontal" action="#" method="post">
-               
+              <form class="form-horizontal" action="{% url 'addNotification' %}" method="post">
+               {% csrf_token %}
                 <br>
-                
+                <input type="hidden" class="form-control" name="order" value="{{data.id}}"/>
                 <div class="mb-3 row">
                     <label class="form-label col-md-3">Notification Title</label>
                     <div class="col-md-8">
-                      <input class="form-control" type="text" placeholder="Enter title" name="title">
+                      <input class="form-control" type="text" placeholder="Enter title" name="notification_title">
                     </div>
                 </div>
                 
                 <div class="mb-3 row">
                   <label class="form-label col-md-3">Notification Content</label>
                   <div class="col-md-8">
-                    <textarea class="form-control" rows="4" placeholder="Enter Content" name="content"></textarea>
+                    <textarea class="form-control" rows="4" placeholder="Enter Content" name="notification_content"></textarea>
                   </div>
                 </div>
 
                 <div class="mb-3 row">
                   <label class="form-label col-md-3">Notification Date</label>
                   <div class="col-md-8">
-                    <input class="form-control" type="date" placeholder="Date" name="title">
+                    <input class="form-control" type="date" placeholder="Date" name="date">
                   </div>
-              </div>
+                </div>
                 
                 <div class="mb-3 row">
                   <div class="col-md-8 col-md-offset-3">

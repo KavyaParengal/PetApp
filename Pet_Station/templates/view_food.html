@@ -72,21 +72,25 @@
         <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Food</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'add_food' %}"><i class="icon bi bi-circle-fill"></i> Add Food</a></li>
-            <li><a class="treeview-item active" href="{% url 'view_food' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
+            <li><a class="treeview-item active" href="{% url 'viewFoods' %}"><i class="icon bi bi-circle-fill"></i> View Food</a></li>
           </ul>
         </li>
 
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Manage Notification</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{% url 'add_notification' %}"><i class="icon bi bi-circle-fill"></i> Add Notification</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
+            <li><a class="treeview-item" href="{% url 'viewNotification' %}"><i class="icon bi bi-circle-fill"></i> View Notifications</a></li>
           </ul>
       </li>
 
-      <li><a class="app-menu__item" href="{% url 'chatWithUser' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
+      <li><a class="app-menu__item" href="{% url 'viewChat' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">Chat with user</span></a></li>
        
       <li><a class="app-menu__item" href="{% url 'viewUsers' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Users</span></a></li>
-      </ul>
+      <li><a class="app-menu__item" href="{% url 'viewOrder' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Orders</span></a></li>
+          
+      <li><a class="app-menu__item" href="{% url 'viewPayment' %}"><i class="app-menu__icon bi bi-grid"></i><span class="app-menu__label">View Payments</span></a></li>
+      
+    </ul>
     </aside>
     <main class="app-content">
       <div class="app-title">
@@ -101,34 +105,47 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Breed</th>
+                  <th>Product Name</th>
+                  <th>Product Type</th>
+                  <th>Net Weight</th>
+                  <th>Company Name</th>
+                  <th>Benefit</th>
+                  <th>Price</th>
+                  <th>Marketed By</th>
                   <th>Description</th>
-                  <th>Gender</th>
-                  <th>Image 1</th>
+                  <th>Expected date</th>
+                  <!-- <th>Image 1</th>
                   <th>Image 2</th>
                   <th>Image 3</th>
                   <th>Image 4</th>
+                  <th>Image 5</th> -->
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
+                {% for i in data %}
                 <tr>  
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>@mscx</td>
-                  <td><button class="btn btn-primary" type="button">Edit</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-danger" type="button">Delete</button>
-                </td>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{i.product_name}}</td>
+                  <td>{{i.product_type}}</td>
+                  <td>{{i.net_weight}}</td>
+                  <td>{{i.company_name}}</td>
+                  <td>{{i.benefit}}</td>
+                  <td>{{i.price}}</td>
+                  <td>{{i.marketed_by}}</td>
+                  <td>{{i.description}}</td>
+                  <td>{{i.expdate}}</td>
+                  <!-- <td>{{i.image1}}</td>
+                  <td>{{i.image2}}</td>
+                  <td>{{i.image3}}</td>
+                  <td>{{i.image4}}</td>
+                  <td>{{i.image5}}</td> -->
+                  <td>
+                    <a href="{% url 'adminEditFood' i.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'deleteFood' i.id %}" class="btn btn-danger">Delete</a>
+                  </td>
                 </tr>
-                
+                {% endfor %}  
               </tbody>
             </table>
           </div>
